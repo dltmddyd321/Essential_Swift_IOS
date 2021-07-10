@@ -1,4 +1,5 @@
 import UIKit
+import Foundation
 
 var greeting = "Hello, playground"
 print(greeting)
@@ -71,3 +72,105 @@ if hours > 40 {
 
 salary += hours * payPerHour
 
+var i = 0
+while i<10 {
+    print(i)
+    
+    if i == 5 {
+        break
+    }
+    i += 1
+}
+
+i = 0
+repeat {
+    print(i)
+    i += 1
+} while i<10
+
+//while
+//조건 -> 코드 수행 -> 조건 -> 코드 수행
+
+//repeat
+//코드 수행 -> 조건 -> 코드 수행 -> 조건
+
+let closedRange = 0...10
+let halfClosedRange = 0..<10
+
+var sum = 0
+for i in closedRange {
+    print("--> \(i)")
+    sum += i
+}
+
+print("--> total sum : \(sum)")
+
+var sinValue: CGFloat = 0
+for i in closedRange {
+    sinValue = sin(CGFloat.pi/4 * CGFloat(i))
+    //그래프 생성
+}
+
+let name5 = "Jason"
+for _ in closedRange {
+    print("--> name: \(name5)")
+}
+
+for i in closedRange {
+    if i % 2 == 0{
+        print("--> 짝수: \(i)")
+    }
+}
+
+for i in closedRange where i % 2 == 0 {
+    print("--> 짝수: \(i)")
+}
+
+for i in closedRange {
+    if i == 3{
+        continue
+        //3이면 건너뜀
+    }
+    print("--> \(i)")
+}
+
+for i in closedRange {
+    for j in closedRange {
+        print("gugudan -> \(i) * \(j) = \(i*j)")
+    }
+}
+
+let num = 10
+
+switch num {
+case 0:
+    print("값 : 0")
+case 0...10:
+    print("0~10 사이")
+case 10:
+    print("값 : 10")
+default:
+    print("나머지")
+}
+
+let num2 = 5
+switch num2 {
+case _ where num2 % 2 == 0:
+    print("짝수")
+default:
+    print("홀수")
+}
+
+
+let coordinate2 = (x:0, y:10)
+
+switch coordinate2 {
+case (0,0):
+    print("원점입니다.")
+case (_,0):
+    print("x축입니다.")
+case (0,_):
+    print("y축입니다.")
+default:
+    print("좌표 어딘가")
+}
