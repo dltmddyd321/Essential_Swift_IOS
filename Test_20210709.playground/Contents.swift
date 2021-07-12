@@ -174,3 +174,7 @@ case (0,_):
 default:
     print("좌표 어딘가")
 }
+
+let names = ["Zoey", "Chloe", "Amani", "Amaia"]
+let randomName = names.randomElement()!
+//배열에서 랜덤 값 반환
