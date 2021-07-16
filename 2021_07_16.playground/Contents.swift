@@ -152,3 +152,60 @@ trailingFunction(message: "건강이 제일입니다.") {
     print("날씨가 많이 덥네요")
 }
 
+
+//Object = Data + Method
+
+//거리 측정 함수
+func distance(current: Location, target: Location) -> Double {
+    //피타고라스 법칙
+    let distanceX = Double(target.x - current.x)
+    let distanceY = Double(target.y - current.y)
+    let distance = sqrt(distanceX * distanceX + distanceY * distanceY)
+    return distance
+}
+
+struct Location {
+    let x: Int
+    let y: Int
+}
+
+struct Store {
+    let loc: Location
+    let name: String
+    let deliveryRange = 2.0
+    
+    func isDelivery(userLoc: Location) -> Bool {
+        let distanceToStore = distance(current: userLoc, target: loc)
+        return distanceToStore < deliveryRange
+    }
+}
+
+//현재 스토어 위치
+let store1 = Store(loc: Location(x:3, y:5), name:"GS")
+let store2 = Store(loc: Location(x:4, y:6), name:"SEVEN")
+let store3 = Store(loc: Location(x:1, y:7), name:"CU")
+
+
+//가장 가까운 스토어 반환
+func printClosetStore(currentLocation:Location, stores:[Store]) {
+    var closetStoreName = ""
+    var closetStoreDistance = Double.infinity
+    var isDeliverable = false
+    
+    for store in stores {
+        let distanceToStore = distance(current: currentLocation, target: store.loc)
+        closetStoreDistance = min(distanceToStore, closetStoreDistance)
+        if closetStoreDistance == distanceToStore {
+            closetStoreName = store.name
+            isDeliverable = store.isDelivery(userLoc: currentLocation)
+        }
+    }
+    
+    print("Closet Store: \(closetStoreName), isDeliveralbe: \(isDeliverable)")
+}
+
+//Store Array, 현재 위치
+let myLocation = Location(x:2, y:5)
+let stores = [store1, store2, store3]
+
+printClosetStore(currentLocation: myLocation, stores: stores)
