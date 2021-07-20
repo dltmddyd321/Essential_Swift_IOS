@@ -22,23 +22,10 @@ class BountyViewController: UIViewController, UITableViewDataSource, UITableView
     //ViewModel
     //- BountyViewModel
     //- BountyViewModel를 만들고, View Layer에서 필요한 메소드 만들기
-    
-//    let bountyInfoList: [BountyInfo] = [
-//        BountyInfo(name: "brook", bounty: 33000000),
-//        BountyInfo(name: "chopper", bounty: 50),
-//        BountyInfo(name: "franky", bounty: 44000000),
-//        BountyInfo(name: "luffy", bounty: 30000000),
-//        BountyInfo(name: "nami", bounty: 16000000),
-//        BountyInfo(name: "robin", bounty: 80000000),
-//        BountyInfo(name: "sanji", bounty: 70000000),
-//        BountyInfo(name: "zoro", bounty: 12000000)
-//    ]
+
     
     let viewModel = BountyViewModel()
     
-//    let nameList = ["brook", "chopper", "franky", "luffy", "nami", "robin", "sanji", "zoro"]
-//
-//    let bountyList = [33000000, 50, 44000000, 30000000, 16000000, 80000000, 70000000, 12000000]
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //DetailViewController에게 데이터를 전송
@@ -49,12 +36,8 @@ class BountyViewController: UIViewController, UITableViewDataSource, UITableView
             if let index = sender as? Int {
                 // let bountyInfo = bountyInfoList[index]
                 let bountyInfo = viewModel.bountyInfo(at: index)
-//                vc?.name = nameList[index]
-//                vc?.bounty = bountyList[index]
                 
                 vc?.viewModel.update(model: bountyInfo)
-//                vc?.name = bountyInfo.name
-//                vc?.bounty = bountyInfo.bounty
                 
             } //name과 bounty를 세그웨이가 수행되면서 미리 업데이트
         }
@@ -77,26 +60,12 @@ class BountyViewController: UIViewController, UITableViewDataSource, UITableView
     } //몇 개의 셀이 활성화 될 것인지 지정 -> 리스트 요소 개수 만큼 활성
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else {
-//            return UITableViewCell()
-//            //guard를 통해 nil일 경우 실행
-//        }
-//
-//        return cell
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListCell else {
             return UITableViewCell()
         }
-//            let img = UIImage(named: "\(nameList[indexPath.row]).jpg")
-//            cell.imgView.image = img
-//            cell.nameLabel.text = nameList[indexPath.row]
-//            cell.bountyLabel.text = "\(bountyList[indexPath.row])"
-            
-           // let bountyInfo = bountyInfoList[indexPath.row]
         let bountyInfo = viewModel.bountyInfo(at: indexPath.row)
-        cell.imgView.image = bountyInfo.image
-        cell.nameLabel.text = bountyInfo.name
-        cell.bountyLabel.text = "\(bountyInfo.bounty)"
+        cell.update(info: bountyInfo)
         return cell
     } //등록하여 반환할 셀의 id 지정
     
@@ -111,6 +80,12 @@ class ListCell: UITableViewCell { //커스텀 뷰 생성
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bountyLabel: UILabel!
+    
+    func update(info: BountyInfo) {
+        imgView.image = info.image
+        nameLabel.text = info.name
+        bountyLabel.text = "\(info.bounty)"
+    }
 }
 
 
@@ -122,19 +97,7 @@ class ListCell: UITableViewCell { //커스텀 뷰 생성
 // - MVVM 이전에 MVC 사용 (Model - View - Controller)
 // 리팩터링 : 기술 부채를 최소화하고 유지 보수성을 높이기 위해 코드를 점검하고 수정하는 것
 
-struct BountyInfo { //Model 선언
-    let name: String
-    let bounty: Int
-    
-    var image: UIImage? {
-        return UIImage(named: "\(name).jpg")
-    }
-    
-    init(name:String, bounty: Int) {
-        self.name = name
-        self.bounty = bounty
-    }
-}
+
 
 class BountyViewModel {
     let bountyInfoList: [BountyInfo] = [
@@ -145,14 +108,21 @@ class BountyViewModel {
         BountyInfo(name: "nami", bounty: 16000000),
         BountyInfo(name: "robin", bounty: 80000000),
         BountyInfo(name: "sanji", bounty: 70000000),
-        BountyInfo(name: "zoro", bounty: 12000000)
+        BountyInfo(name: "zoro", bounty: 27000000)
     ]
+    
+    var sortedList: [BountyInfo] {
+        let sortedList = bountyInfoList.sorted { prev, next in
+            return prev.bounty > next.bounty
+        }
+        return sortedList
+    } //가격이 비싼 순서대로 상위부터 배치
     
     var numOfBountyInfoList : Int {
         return bountyInfoList.count
     }
     
     func bountyInfo(at index: Int) -> BountyInfo {
-        return bountyInfoList[index]
+        return sortedList[index]
     }
 }

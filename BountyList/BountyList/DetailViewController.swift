@@ -25,10 +25,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bountyLabel: UILabel!
     
-//    var name: String?
-//    var bounty: Int?
-    //데이터에 필요한 프로퍼티 추가
-    
     let viewModel = DetailViewModel()
 
     override func viewDidLoad() {
@@ -44,24 +40,6 @@ class DetailViewController: UIViewController {
             bountyLabel.text = "\(bountyInfo.bounty)"
             //필요한 데이터 등록
         }
-        
-//        if let bountyInfo = self.bountyInfo {
-//            imgView.image = bountyInfo.image
-//            nameLabel.text = bountyInfo.name
-//            bountyLabel.text = "\(bountyInfo.bounty)"
-//            //필요한 데이터 등록
-//        }
-        
-//        if let name = self.name, let bounty = self.bounty {
-//
-//        let img = UIImage(named: "\(name).jpg")
-//        //원하는 파일 형식의 이미지를 갖고와서 변수에 저장
-//
-//        imgView.image = img
-//        nameLabel.text = name
-//        bountyLabel.text = "\(bounty)"
-//        //필요한 데이터 등록
-//        }
     }
     
 
