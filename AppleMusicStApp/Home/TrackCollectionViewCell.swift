@@ -17,10 +17,13 @@ class TrackCollecionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         trackThumbnail.layer.cornerRadius = 4
         trackArtist.textColor = UIColor.systemGray2
-    }
+    } //실제로 UI가 로드될 때 실행되는 메소드
     
     func updateUI(item: Track?) {
         // TODO: 곡정보 표시하기
-        
+        guard let track = item else { return }
+        trackThumbnail.image = track.artwork
+        trackTitle.text = track.title
+        trackArtist.text = track.artist
     }
 }
