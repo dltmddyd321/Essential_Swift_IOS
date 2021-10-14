@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="QuotesGenerator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="명언 생성기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gyl-lY-mX3">
+                                <rect key="frame" x="24" y="68" width="366" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aph-qN-5XN">
+                                <rect key="frame" x="24" y="128" width="366" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="오늘의 한마디" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILc-nk-Jwt">
+                                        <rect key="frame" x="20" y="20" width="326" height="140"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utQ-im-hFr">
+                                        <rect key="frame" x="20" y="180" width="326" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ILc-nk-Jwt" secondAttribute="trailing" constant="20" id="AEq-hR-mhx"/>
+                                    <constraint firstItem="utQ-im-hFr" firstAttribute="leading" secondItem="Aph-qN-5XN" secondAttribute="leading" constant="20" id="CZ7-Sf-9yN"/>
+                                    <constraint firstItem="ILc-nk-Jwt" firstAttribute="leading" secondItem="Aph-qN-5XN" secondAttribute="leading" constant="20" id="Eqw-EP-4lK"/>
+                                    <constraint firstAttribute="bottom" secondItem="utQ-im-hFr" secondAttribute="bottom" constant="20" id="UfA-4A-cdA"/>
+                                    <constraint firstAttribute="height" constant="200" id="aW1-0r-Qjm"/>
+                                    <constraint firstAttribute="trailing" secondItem="utQ-im-hFr" secondAttribute="trailing" constant="20" id="cGx-d9-mAh"/>
+                                    <constraint firstItem="utQ-im-hFr" firstAttribute="top" secondItem="ILc-nk-Jwt" secondAttribute="bottom" constant="20" id="vSt-eW-byf"/>
+                                    <constraint firstItem="ILc-nk-Jwt" firstAttribute="top" secondItem="Aph-qN-5XN" secondAttribute="top" constant="20" id="ySv-ix-rDS"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ma-aT-XEm">
+                                <rect key="frame" x="157" y="348" width="100" height="100"/>
+                                <color key="backgroundColor" red="0.62666178039999998" green="0.91261583580000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="fmy-MV-0VD"/>
+                                    <constraint firstAttribute="width" constant="100" id="obK-Ts-Il7"/>
+                                </constraints>
+                                <state key="normal" title="명언 생성"/>
+                                <connections>
+                                    <action selector="setQuoteBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wCu-de-o5F"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Aph-qN-5XN" firstAttribute="top" secondItem="Gyl-lY-mX3" secondAttribute="bottom" constant="24" id="2uT-2V-c5X"/>
+                            <constraint firstItem="Aph-qN-5XN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="GP5-oB-Avz"/>
+                            <constraint firstItem="9Ma-aT-XEm" firstAttribute="top" secondItem="Aph-qN-5XN" secondAttribute="bottom" constant="20" id="H5C-dc-CMa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Aph-qN-5XN" secondAttribute="trailing" constant="24" id="ghv-2v-SdU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gyl-lY-mX3" secondAttribute="trailing" constant="24" id="lbJ-km-Q7T"/>
+                            <constraint firstItem="Gyl-lY-mX3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="nEz-l3-3w6"/>
+                            <constraint firstItem="Gyl-lY-mX3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="pfQ-fh-nlq"/>
+                            <constraint firstItem="9Ma-aT-XEm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vo9-wa-Lbm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="utQ-im-hFr" id="uM8-H2-CTv"/>
+                        <outlet property="quoteLabel" destination="ILc-nk-Jwt" id="d9u-GG-YJr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="44.927536231884062" y="83.705357142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
