@@ -253,13 +253,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KiE-Rh-Sxt">
-                                                    <rect key="frame" x="69" y="59" width="0.0" height="0.0"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ONR-XV-czt">
                                                     <rect key="frame" x="12" y="12" width="156" height="143"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -284,6 +277,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="180" height="200"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="jyp-JH-hjK" id="F7d-TS-SlR"/>
+                                            <outlet property="titleLabel" destination="ONR-XV-czt" id="Btq-gl-mop"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -304,6 +301,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="eBd-AA-zxI" id="Hm8-ra-ZGU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -380,8 +380,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="일기 작성" id="puj-85-6t7">
-                        <barButtonItem key="rightBarButtonItem" title="등록" id="2jW-cb-0kd"/>
+                        <barButtonItem key="rightBarButtonItem" title="등록" id="2jW-cb-0kd">
+                            <connections>
+                                <action selector="tapConfirmBtn:" destination="sEm-BM-ow6" id="VsY-v0-xDC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="confirmBtn" destination="2jW-cb-0kd" id="gDU-mF-gOK"/>
+                        <outlet property="contentsTextView" destination="X72-rE-7oh" id="Hkg-ay-lvC"/>
+                        <outlet property="dateTextField" destination="FFp-Ha-isF" id="kc3-4K-WZY"/>
+                        <outlet property="titleTextField" destination="rNn-cK-mJf" id="cZ5-CH-5vI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DaV-NK-UWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
