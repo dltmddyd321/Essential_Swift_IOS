@@ -21,6 +21,19 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.configureCollectionView()
         self.loadDiaryList()
+        //메인화면에서 수정된 내용이 반영되도록하는 옵저버 추가
+        NotificationCenter.default.addObserver(self, selector: #selector(editDiaryNotification(_:)), name: NSNotification.Name("editDiary"), object: nil)
+    }
+    
+    @objc func editDiaryNotification(_ notification: Notification) {
+        guard let diary = notification.object as? Diary else {return}
+        guard let row = notification.userInfo?["indexPath.row"] as? Int else {return}
+        self.diaryList[row] = diary
+        //수정 반영에 의해 날짜 순서가 변경될수도 있으니 다시 고차 함수로 날짜를 정렬
+        self.diaryList = self.diaryList.sorted(by: {
+            $0.date.compare($1.date) == .orderedDescending
+        })
+        self.collectionView.reloadData()
     }
     
     private func configureCollectionView() {
@@ -99,6 +112,20 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //메인화면에서 상세 화면으로 일기장의 데이터를 넘기기 위한 다운 캐스팅
+        guard let viewController = self.storyboard?.instantiateViewController(identifier: "DiaryDetailViewController") as? DiaryDetailViewController else {return}
+        
+        //특정 인덱스의 데이터 값을 호출
+        let diary = self.diaryList[indexPath.row]
+        viewController.diary = diary
+        viewController.indextPath = indexPath
+        viewController.delegate = self
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
 extension ViewController: WriteDiaryViewDelegate {
     func didSelectRegister(diary: Diary) {
         //반환받은 값을 배열에 추가
@@ -108,5 +135,13 @@ extension ViewController: WriteDiaryViewDelegate {
             $0.date.compare($1.date) == .orderedDescending
         })
         self.collectionView.reloadData()
+    }
+}
+
+extension ViewController : DiaryDetailViewDelegate {
+    func didSelectDelete(indexPath: IndexPath) {
+        //전달 받은 배열의 인덱스 값 요소를 삭제
+        self.diaryList.remove(at: indexPath.row)
+        self.collectionView.deleteItems(at: [indexPath])
     }
 }

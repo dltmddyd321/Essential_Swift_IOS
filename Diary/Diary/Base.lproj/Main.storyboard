@@ -116,7 +116,7 @@
         <!--Diary Detail View Controller-->
         <scene sceneID="Eo8-SX-iPS">
             <objects>
-                <viewController id="XJn-vW-bS2" customClass="DiaryDetailViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiaryDetailViewController" id="XJn-vW-bS2" customClass="DiaryDetailViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9nx-QH-fyK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -177,12 +177,18 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYX-V4-GK8">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="수정"/>
+                                        <connections>
+                                            <action selector="editBtn:" destination="XJn-vW-bS2" eventType="touchUpInside" id="YnB-kN-KYR"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ND3-BR-iKo">
                                         <rect key="frame" x="80" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="삭제">
                                             <color key="titleColor" red="0.86087566609999999" green="0.25425231370000001" blue="0.25281137419999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
+                                        <connections>
+                                            <action selector="deleteBtn:" destination="XJn-vW-bS2" eventType="touchUpInside" id="UEW-iI-DN7"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -206,6 +212,11 @@
                             <constraint firstItem="PZN-q7-Sfr" firstAttribute="trailing" secondItem="qbA-pR-OVs" secondAttribute="trailing" constant="20" id="yeu-j1-fsJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentsTextView" destination="qbA-pR-OVs" id="Kma-mH-8ss"/>
+                        <outlet property="dateLabel" destination="fBK-ae-efO" id="24L-xw-vNe"/>
+                        <outlet property="titleLabel" destination="4Xe-T6-1hd" id="dap-Ud-xgM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R6Z-CW-Ond" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -312,7 +323,7 @@
         <!--일기 작성-->
         <scene sceneID="aJF-0n-tWx">
             <objects>
-                <viewController id="sEm-BM-ow6" customClass="WriteViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WriteDiaryViewController" id="sEm-BM-ow6" customClass="WriteViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bXc-uz-NvE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
