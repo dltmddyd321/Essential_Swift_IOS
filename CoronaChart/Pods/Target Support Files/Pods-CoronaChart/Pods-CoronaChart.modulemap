@@ -1,0 +1,6 @@
+framework module Pods_CoronaChart {
+  umbrella header "Pods-CoronaChart-umbrella.h"
+
+  export *
+  module * { export * }
+}
