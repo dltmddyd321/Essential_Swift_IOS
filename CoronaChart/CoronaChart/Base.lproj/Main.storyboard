@@ -32,7 +32,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nRk-od-M4p">
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nRk-od-M4p">
                                 <rect key="frame" x="24" y="112" width="366" height="61"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="V4F-4x-1Ir">
@@ -71,10 +71,13 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ed0-21-7YQ" customClass="PieChartView" customModule="Charts">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ed0-21-7YQ" customClass="PieChartView" customModule="Charts">
                                 <rect key="frame" x="24" y="197" width="366" height="641"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nHX-Np-rlH">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -82,14 +85,18 @@
                             <constraint firstItem="nRk-od-M4p" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="9ce-UV-C8P"/>
                             <constraint firstItem="ed0-21-7YQ" firstAttribute="top" secondItem="nRk-od-M4p" secondAttribute="bottom" constant="24" id="BXC-bO-JV0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ed0-21-7YQ" secondAttribute="trailing" constant="24" id="JpP-Rc-hWx"/>
+                            <constraint firstItem="nHX-Np-rlH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="NwF-es-UH4"/>
                             <constraint firstItem="nRk-od-M4p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="OCM-6c-j01"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nRk-od-M4p" secondAttribute="trailing" constant="24" id="Qgo-t5-QAG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ed0-21-7YQ" secondAttribute="bottom" constant="24" id="U4h-la-Z2o"/>
+                            <constraint firstItem="nHX-Np-rlH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d67-ZO-50A"/>
                             <constraint firstItem="ed0-21-7YQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="hdF-Pe-Jm5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4qj-hy-t1E"/>
                     <connections>
+                        <outlet property="indicatorView" destination="nHX-Np-rlH" id="7YK-qu-lwc"/>
+                        <outlet property="labelStackVIew" destination="nRk-od-M4p" id="SNX-j5-adV"/>
                         <outlet property="newCaseLabel" destination="9wW-18-tD4" id="vjU-rZ-qPW"/>
                         <outlet property="pieChartView" destination="ed0-21-7YQ" id="dsf-pX-VZB"/>
                         <outlet property="totalCaseLabel" destination="Kte-AP-rq8" id="TqG-Pn-A2Z"/>
@@ -97,12 +104,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-78" y="116"/>
+            <point key="canvasLocation" x="104" y="76"/>
         </scene>
         <!--Covid Detail View Controller-->
         <scene sceneID="aME-Ks-bKH">
             <objects>
-                <tableViewController id="ydz-Xq-RIg" customClass="CovidDetailViewController" customModule="CoronaChart" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CovidDetailViewController" id="ydz-Xq-RIg" customClass="CovidDetailViewController" customModule="CoronaChart" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Kv2-AN-Dey">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
